@@ -11,6 +11,7 @@ const authMiddleware = (requiredRole) => {
     try {
       // Decode the token and verify it
       const decoded = jwt.verify(token.replace('Bearer ', ''), process.env.JWT_SECRET);
+      // console.log(decoded)
       req.user = decoded.userId;
       // Attach the user information to the request object
       req.user = { id: decoded.userId, role: decoded.role };
